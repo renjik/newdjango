@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imagefolder</title>
+    <link rel="stylesheet" href="{% static 'css/files.css' %}">
+</head>
+<body>
+    <div class="container text-center">
+      <div class="row mt-5">
+        <h1 class=' text-center pt-5 '>Comics World</h1>
+        <p class ='text-center pb-5'>- Get your Comics here - </p>
+        <hr>
+      {% for i in dwn1 %}
+      <div class="col-lg-3 mt-4">
+        <div class="card" style="width: 18rem; ">
+            <img src="{{ i.cover.url}}" class="card-img-top" >
+            <div class="card-body"> 
+            <h5 class="card-title">{{ i.title}}</h5>
+              {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
+            </div>
+              <div class = 'row'>
+                <div class ='col-lg '>
+                {% comment %} <a type='submit' class='btn btn-primary' href='{% url 'edit'  %}' >edit</a> {% endcomment %}
+             
+                <a type='submit' class='btn btn-danger' href = '{% url 'delete' s_id=i.m %}'>delete</a>
+              </div>
+            </div>
+            <div class="card-body">
+              <a href="{{ i.pdf.url}}" class="card-link">Download here</a>
+              {% comment %} <a href="#" class="card-link">Another link</a> {% endcomment %}
+            </div>
+          </div>
+        </div>
+       {% endfor %}
+       <a href='{% url 'home' %}'>Click here</a>
+    </div>
+  </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
